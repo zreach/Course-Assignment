@@ -1,0 +1,216 @@
+\documentclass{article}
+
+\usepackage{ctex}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{datetime}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{geometry}
+
+\geometry{left=3.0cm,right=2.0cm,top=2.5cm,bottom=2.5cm}
+\title{离散数学作业 Problem Set 4}
+\renewcommand{\baselinestretch}{1.5} %调整行间距
+
+\author{201830099 周义植}
+\date{\today}
+
+\begin{document}
+\maketitle
+\section*{Problem 1}
+a) $2!<2^{2}$
+
+b)证明:   $2!=2,2^{2}=4,2<4$,所以P(2)成立。
+
+c)$\forall k(P(k))$
+
+d)$\forall k(P(k)\rightarrow P(k+1))$
+
+e)由于P(K),$(k+1)!=k!\cdot (k+1)<k^{k}\cdot (k+1)< (k+1)^{k+1},$所以$P(k+1)$.
+
+f)
+
+假设$\exists k(\neg P(k))$,令集合$S=\left\{k \in Z^{+},k>1 \mid \neg P(k)\right\},$S为大于1整数的非空子集。
+
+由良序公理，S有最小元素m(m>2)。$(m-1)\notin S,$所以$P(m-1)$成立；
+
+而$P(m-1)\rightarrow P(m),m\notin S,$矛盾。
+
+因此$\forall kP(k)$成立。
+
+\section*{Problem 2}
+证明：
+
+$P(n):$存在自然数a,b使得$5^{n}=a^{2}+b^{2}$
+
+首先可知$5^0 = 1^2+0^2,5^1=1^2+2^2,$所以$P(0),P(1)$为真。
+
+而若$P(k-1)$为真,则$5^{k+1}=5^{k-1}\cdot 5^2 = (5a)^{2}+(5b)^{2},$因此有$P(k+1)$为真.
+
+所以由数学归纳法知,对于自然数n,$P(n)$为真.
+
+\section*{Problem 3} 
+证明：
+
+用反证法，假设$\sqrt{2}=\frac{p}{q};p,q\in Z^{+},$则$p=\sqrt{2}q$
+
+所以令$T=\left\{\sqrt{2}q |q,\sqrt{2}q \in Z^{+}  \right\}$为正整数集子集，知$T\neq \varnothing$
+
+由良序公理，必存在最小元素$q_{0}\sqrt{2}\in T.$又$1<\sqrt{2}<2,$所以$0<(2-\sqrt{2})<1$
+
+而$(2-\sqrt{2})q_{0}=\sqrt{2}(\sqrt{2}q_{0}-1)=\sqrt{2}q_{1} \in Z^{+},q_{1}=(\sqrt{2}q_{0}-1)\in Z^{+},$因此$\sqrt{2}q_{1}\in T$
+
+但$\sqrt{2}q_1<\sqrt{2}q_0,$矛盾。
+
+因此$\sqrt{2}$不是有理数。
+\section*{Problem 4}
+a)基础步骤：对于串中的一个单位符，
+\begin{equation}
+    \nonumber
+ones(x)=\left\{\begin{array}{l}
+    0,x==0 \\
+    1,x==1
+    \end{array}\right.
+\end{equation}
+
+递归步骤：$ones(\omega x)=ones(\omega)+ones(x)$.
+
+b)设P(y):每当s为位串,ones(sy) = ones(s) + s(y)
+
+基础步骤：当y为单位符时，由a)中定义显然。
+
+递归：$P(y)$时，令a为单位符，$ones(sya)=ones(sy)+ones(a)=ones(s)+ones(y)+ones(a)=ones(s)+ones(ya)$,因此$P(y)\rightarrow P(ya)$。
+
+因此$ones(st)=ones(s)+ones(t)$为真。
+\section*{Problem 5}
+a)(1)0   (2)$Q(12,5) = Q(7,5)+1 = Q(2,5)+2 = 2$
+
+b)求$\lfloor  a/b\rfloor $. 837.
+
+\section*{Problem 6}
+设A为000开始的二进制串集合,B为111结尾的二进制串集合。
+$|A|=|B|= 2^{n-3}$,而$|A\cap B| = 2^{n-6}$.因此,由容斥原理,000开头或111结尾的二进制串数量$|A\cup B|=|A|+|B|-|A\cap B| = 2^{n-2}-2^{n-6}$
+
+\section*{Problem 7}
+证明:
+
+P(n):假设$A_{1},A_{2}\cdots A{n}$为n个有限集合,则$$\left|\bigcup_{i=1}^{n} \mathrm{~A}_{i}\right| = S_{1}-S_{2}+S_{3}-\ldots+(-1)^{k-1} S_{k}+\ldots+(-1)^{n-1} S_{n}$$
+
+其中,$S_{k}=\sum_{1 \leq i_{1} \leq i_{2} \leq \ldots \leq i_{k} \leq n}\left|A_{i_{1}} \cap A_{i_{2}} \cap \ldots \cap A_{i_{k}}\right| \quad k=1,2, \ldots, n$
+
+$P(1),P(2)$为真显然。
+
+$P(k)$为真时
+
+\begin{equation}
+    \nonumber
+    \begin{aligned}
+        \left|\bigcup_{i=1}^{k+1} A_{i}\right| &=\left|\bigcup_{i=1}^{k} A_{i} \cup A_{k+1}\right| \\
+        =&\left|\bigcup_{i=1}^{k} A_{i}\right|+\left|A_{k+1}\right| k-\left|\bigcup_{i=1}^{k} A_{i} \cap A_{k+1}\right| \\
+        =&\left|\bigcup_{i=1}^{k} A_{i}\right|+\left|A_{k+1}\right|-\left|\bigcup_{i=1}^{k}\left(A_{i} \cap A_{k+1}\right)\right| \\
+        =& \sum_{}^{k}\left|A_{i}\right|+\left|A_{k+1}\right|-\sum^{k}\left|A_{i 1} \cap A_{i 2}\right|+\sum_{}^{k}\left|A_{i 1} \cap A_{i 2} \cap A_{i 3}\right| \\
+        &-\left(\sum_{}^{k}\left|A_{i 1} \cap A_{k+1}\right|-\sum_{}^{k}\left|A_{i 1} \cap A_{i 2} \cap A_{k+1}\right|+\cdots\right) \\
+        =& \sum_{}^{k+1}\left|A_{i}\right|-\sum_{}^{k+1}\left|A_{i 1} \cap A_{i 2}\right|+\sum_{}^{k+1}\left|A_{i 1} \cap A_{i 2} \cap A_{i 3}\right|+\cdots +(-1)^{k+1}\left|A_{1} \cap A_{2} \cap \cdots A_{k+1}\right| \\
+        =& S_{1}-S_{2}+S_{3} \ldots \ldots+(-1)^{k+1} S_{k+1}
+        \end{aligned}
+\end{equation}
+P(k+1)为真。
+
+$\therefore P(k)\rightarrow P(k+1),$由数学归纳法$\forall nP(n).$
+
+\section*{Problem 8}
+每个人选取课程的种类有$C_{8}^{5}=56$种.
+
+因此,至少要有$56*9+1=505$名学生,使得至少有10名学生的学习计划相同.
+
+\section*{Problem 9}
+a)所有的选取方式为$C_{16}^{5}$种,一名女教师也不包含的有$C_{9}^{5}$种,因此包含至少一名女教师的选取方式有$C_{16}^{5} - C_{9}^{5}=4368-126=4242$种
+
+b)$C_{16}^{5}-C_{9}^{5}-C_{7}^{5}+0=4221$种.
+
+\section*{Problem 10}
+a) $C_{12+6-1}^{12}=6188$
+
+b) $C_{12+36-1}^{36}=17417133617$
+
+c)相当于有12个已经选好,所以组合数为$C_{6+12-1}^{12}=6188$
+
+d) $C_{6+24-1}^{24} - C_{6+21-1}^{21}=C_{29}^{24} - C_{26}^{21}$
+
+e) $C_{6+16-1}^{16}=C_{21}^{16}$
+
+f) $C_{6+15-1}^{15}- C_{6+12-1}^{12}=C_{20}^{15}-C_{17}^{12}$
+
+\section*{Problem 11}
+a)枚举可得,$P(A) = 6/8=3/4$,$P(B)= (1+3)/8=1/2,P(A\cap B)=1/8 = P(A)P(B)$所以二者独立。
+
+b) $P(A)=1/4,p(B)=3/4,P(A\cap B)=1/4 \neq P(A)P(B)$,所以二者不独立.
+
+\section*{Problem 12}
+设事件A:感染禽流感病毒;B:禽流感检测呈阳性。知$P(A)=4\%,P(B|A)=97\%,P(B|\overline{A})=2\%$
+
+可求得$P(AB) = P(B|A)P(A)=3.88\%,P(B)=P(B|A)P(A)+P(B|\overline{A})P(\overline{A}) = 5.8\%$
+
+~\
+
+a)$P(A|B) = P(AB)/P(B) \approx 66.9\%$
+
+b)$P(\overline{A}|B) = 1-P(A|B) = 33.1\%$
+
+c)$P(A|\overline{B})=P(A\overline{B})/P(\overline{B})=P(\overline{B}|A)P(A)/P(\overline{B})=(1-P(B|A))P(A)/(1-P(B)) \approx 0.127\% $
+
+d)$P(\overline{A}|\overline{B}) = 1-P(A|\overline{B})=99.873\%$
+
+\section*{Problem 13}
+设事件L:迟到；A:开车上班；B:公共汽车；C:骑车上班。
+
+
+a)首先能计算得$P(L)=P(L|A)P(A)+P(L|B)P(B)+P(L|C)P(C)=25\%$
+
+从而$P(A|L)=P(L|A)P(A)/P(L)=2/3$
+
+b)首先能计算得$P(L)=P(L|A)P(A)+P(L|B)P(B)+P(L|C)P(C)=20\%$
+
+从而$P(A|L)=P(L|A)P(A)/P(L)=3/4$
+
+\section*{Problem 14}
+a)
+\begin{equation}
+    \nonumber
+    \begin{array}{c|c}
+        \hline x & p(x) \\
+        \hline 2 & \frac{1}{9} \\
+        \hline 3 & \frac{2}{9} \\
+        \hline 4 & \frac{1}{3} \\
+        \hline 5 & \frac{2}{9} \\
+        \hline 6 & \frac{1}{9} \\
+    \end{array}
+\end{equation}
+
+$E(X)=2*\frac{1}{9}+3*\frac{2}{9}+4*\frac{1}{3}+5*\frac{2}{9}+6*\frac{1}{9}=4$
+
+b)
+\begin{equation}
+    \nonumber
+    \begin{array}{c|c}
+        \hline y & p(y) \\
+        \hline 1 & \frac{5}{9} \\
+        \hline 2 & \frac{1}{3} \\
+        \hline 3 & \frac{1}{9} \\
+    \end{array}
+\end{equation}
+
+$E(Y)=1*\frac{5}{9}+2*\frac{1}{3}+3*\frac{1}{9}=\frac{14}{9}$
+
+\section*{Problem 15}
+设事件A：单独一次抽到次品。B:下一次抽到次品。设第一次总数为m，次品数为n，则$P(A)=\frac{n}{m},P(B)=\frac{n}{m}\frac{n-1}{m-1}+\frac{m-n}{m}\frac{n}{m-1}=\frac{n}{m}=P(A),$由此每次抽到次品都是同分布的。
+
+5次中抽到次品的概率$p=1-\frac{C_{16}^{5}}{C_{20}^{5}}=\frac{232}{323}\approx 71.8\%$
+
+次品数量的期望$E(X) = E(5A) = 5*E(A) = 5*0.2 = 1$
+
+方差$var(A) = 0.8(1-0.2)^2+0.2(0-0.2)^2 = 0.52$
+
+$var(X)=5*0.52=2.6$
+\end{document}
