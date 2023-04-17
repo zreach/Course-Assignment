@@ -1,0 +1,295 @@
+\documentclass{article}
+
+\usepackage{ctex}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{datetime}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{tikz}
+\usetikzlibrary{positioning} %为了实现相对位置的设定
+\usepackage{xcolor} %为了实现不同的颜色
+\usepackage{listings}
+\usepackage{qtree}% 绘制语法分析树
+\usepackage{forest}% 绘制语法分析树
+\lstset{
+    numbers=left, 
+    numberstyle= \tiny, 
+    keywordstyle= \color{ blue!70},
+    commentstyle= \color{red!50!green!50!blue!50}, 
+    frame=shadowbox, % 阴影效果
+    rulesepcolor= \color{ red!20!green!20!blue!20} ,
+    escapeinside=``, % 英文分号中可写入中文
+    xleftmargin=2em,xrightmargin=2em, aboveskip=1em,
+    framexleftmargin=2em
+} 
+
+\geometry{left=3.0cm,right=2.0cm,top=2.5cm,bottom=2.5cm}
+\title{离散数学 Problem Set 11}
+\renewcommand{\baselinestretch}{1.5} %调整行间距
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black]
+\tikzstyle{decision} = [diamond, draw, text width=5.5em, text badly centered, inner sep=0pt]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzset{
+    bnode/.style ={
+    circle, %矩形节点
+    minimum width =20pt, %最小宽度
+    minimum height =20pt, %最小高度
+    inner sep=5pt, %文字和边框的距离
+    draw=blue, %边框颜色}
+    fill=black,
+    text=white
+    }
+}
+\tikzset{
+    rnode/.style ={
+    circle, %矩形节点
+    minimum size =20pt, %最小宽度
+    % max size = 25pt,
+    inner sep=5pt, %文字和边框的距离
+    draw=blue, %边框颜色}
+    fill=red,
+    text=white
+    }
+}
+\tikzset{
+    leaf/.style={
+    rectangle,
+    minimum size =20pt, %最小宽度
+    inner sep=5pt, %文字和边框的距离
+    draw=blue, %边框颜色}
+    fill=white,
+    text=black
+    }
+}
+\tikzset{
+    fa/.style={
+    circle,
+    minimum size =20pt, %最小宽度
+    inner sep=5pt, %文字和边框的距离
+    draw=blue, %边框颜色}
+    fill=white,
+    text=black
+    }
+}
+\tikzset{
+    enode/.style ={
+    circle, %矩形节点
+    minimum size =5pt, %最小宽度
+    inner sep=5pt, %文字和边框的距离
+    draw=blue, %边框颜色}
+    fill=black,
+    text=white
+    }
+
+    
+}
+
+\lstset{numbers=left,showstringspaces=false,frame=single}
+\geometry{left=2.50cm, right=2.50cm, top=2cm, bottom=2cm}
+\author{201830099 周义植}
+\date{\today}
+
+\begin{document}
+\maketitle
+\section*{Problem 1}
+\subsection*{a}
+\begin{center}
+\begin{tikzpicture}[ 
+    level 1/.style={sibling distance=10cm, level distance=1.5cm},
+    level 2/.style={sibling distance=5cm, level distance=1.5cm},
+    level 3/.style={sibling distance=3cm, level distance=1.5cm},
+    ]
+    \node[fa]{}
+    child {
+        node[leaf] {a(0.36)}
+    }
+    child{
+        node[fa]{}
+        child{
+            node[fa]{}
+            child{
+                node[leaf]{b(0.18)}
+            }
+            child{
+                node[leaf]{c(0.18)}
+            }
+        }
+        child{node[fa]{}
+        child{
+            node[leaf]{d(0.1)}
+        }
+        child{
+            node[fa]{}
+            child{
+                node[leaf]{e(0.08)}
+            }
+            child{
+                node[fa]{}
+                child{
+                    node[leaf]{f(0.06)}
+                }
+                child{
+                    node[leaf]{g(0.04)}
+                }
+            }
+        }
+        }
+    };
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+    \begin{tikzpicture}[ 
+        level 1/.style={sibling distance=10cm, level distance=1.5cm},
+        level 2/.style={sibling distance=5cm, level distance=1.5cm},
+        level 3/.style={sibling distance=2cm, level distance=1.5cm},
+        ]
+
+    \node[fa]{}
+    child{
+        node[fa]{}
+        child{
+            node[leaf]{b(0.18)}
+        }
+        child{
+            node[fa]{}         
+            child{
+                node[leaf]{d(0.10)}
+            }
+            child{
+                node[leaf]{e(0.08)}
+            }
+        }
+    }
+    child{
+        node[fa]{}
+        child{
+            node[leaf]{a(0.36)}
+        }
+        child{
+                node[fa]{}
+                child{
+                    node[leaf]{c(0.18)}
+                }
+                    child{
+                        node[fa]{}
+                        child{
+                            node[leaf]{f(0.06)}
+                        }
+                        child{
+                            node[leaf]{g(0.04)}
+                        }
+                    }
+        }
+    };
+    \end{tikzpicture} 
+\end{center}
+\subsection*{b}
+1) 平均：2.56 方差：1.7264
+
+2) 平均：2.56 方差：0.4464
+
+第二种方法。
+
+\section*{Prolem 2}
+
+\subsection*{a}
+8
+
+\subsection*{b}
+21
+
+\subsection*{c}
+32
+
+\subsection*{d}
+32
+
+\subsection*{e}
+2048
+
+\subsection*{f}
+27
+
+\section*{Problem 3}
+\subsection*{Prim(从点A开始)}
+
+定义：状态中的tree,unseen,fringe分别表示该点已被加入T、还未发现以及加入备选方案。
+
+加入点A：
+
+\begin{equation}
+    \nonumber
+    \begin{array}{l}
+        \begin{array}{lllllllllll}
+        \hline & A & B & C & D & E & F & G & H & I \\
+        \hline \text { fringewgt } & 0 & 5 &  & 2 & &  &  &  &  \\
+        \text { parent } & -1  & A &  & A & &  &  &  & \\
+        \text { status } & tree & fringe & unseen & fringe & unseen & unseen  &  unseen  & unseen & unseen
+        \end{array}\\
+        \hline
+    \end{array}
+\end{equation}
+
+选择AD:
+
+\begin{equation}
+    \nonumber
+    \begin{array}{l}
+        \begin{array}{lllllllllll}
+        \hline & A & B & C & D & E & F & G & H & I \\
+        \hline \text { fringewgt } & 0 & 3 &  & 2 & 7 &  & 6 &  &  \\
+        \text { parent } & -1  & D &  & A & D &  & D &  & \\
+        \text { status } & tree & fringe & unseen & tree & fringe & unseen  &  fringe  & unseen & unseen
+        \end{array}\\
+        \hline
+    \end{array}
+\end{equation}
+
+以此类推，选择DB,BC,CF,FE,EH,HI,HG.
+
+\subsection*{Kruskal}
+
+加边：EF 并查集： (EF)
+加边：AD 并查集： (EF) (AD)
+加边：HI 并查集： (EF) (AD) (HI)
+加边：BD 并查集： (EF) (ABD) (HI)
+加边：CF 并查集： (CEF) (ABD) (HI)
+加边：HE 并查集： (CEFHI) (ABD)
+加边：BC 并查集： (ABDCEFHI)
+加边：GH 并查集： (ABDCEFHIG)
+
+
+
+\section*{Problem 4}
+3次。
+
+第一次，1，2，3与4，5，6。有两种可能的结果：
+
+1)一样重。则伪币在7，8，将1与7称重，如不平则7为伪币，反之为8；
+
+2）不一样重。由对称性，不妨1，2，3轻。将1，7与4，5称重，如不平衡，只能是1，7轻。此时有3种可能：1轻或4/5重。则再将4，5称重，如不平衡则重的为伪币，如平衡则1为伪币。
+如1，7与4，5等重，则可能性为2/3轻或6重，则将2，3称重，轻的为伪币，等重则6为伪币。
+
+\section*{Problem 5}
+\begin{figure}[H]
+    \centering
+    \includegraphics*[scale=0.2]{p1.jpg}
+\end{figure}
+\section*{Problem 6}
+证明：
+
+对于该边较晚发现的点A来说，若要该边不是背边，则需要另一个点B在此时已完全结束（否则A一定是B的后代）。而在遍历B的整个过程中，A都没有开始遍历，那么一定会遍历这条边，矛盾；
+因此该边一定是背边。
+
+\section*{Problem 7}
+证明：
+
+假设该图存在两个不同的最小生成树$T_1,T_2$,其边按权值的升序排列分别为$e_1,e_2,\cdots e_k$与$e^{\prime}_1,e^{\prime}_2,\cdots e^{\prime}_k$。由于边的权重互不相同，每个权值唯一地代表一条边。
+设$i$是最小的使$e_i\neq e^{\prime}_i$的下标，不失一般性令$e_i< e^{\prime}_i$,则对$T_2+\{e_i\}$必定存在圈，且其中存在不在$T_1$中的边ab，则$W(ab)\geq W(e^{\prime}_i) > W(e_i)$,因此用$e_i$代替ab可得到权值更小的生成树，与假设的MST矛盾。
+因此边权值互不相同的图MST唯一。
+\end{document}
